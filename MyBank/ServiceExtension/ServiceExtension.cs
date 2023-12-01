@@ -11,6 +11,18 @@ namespace MyBank.ServiceExtension
 
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer("ConnectionStrings:DefaultConnection"));
+
+            services.AddCors( options =>
+            {
+                options.AddPolicy("CorsPolicy",
+
+                    builder => builder.AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader()
+                                      .AllowCredentials()
+                    ); 
+
+            });
         }
     }
 }
